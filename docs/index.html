@@ -28,7 +28,13 @@
   "owns": [
     { "@type": "WebSite", "name": "経理ミニツールズ", "url": "https://keiri-tools.com/" },
     { "@type": "WebSite", "name": "AI TIMES", "url": "https://aitimes.jp/" }
-  ]
+  ],
+  "employee": {
+    "@type": "Person",
+    "name": "安 昌浩",
+    "jobTitle": "代表取締役",
+    "image": "https://scrumtechnology.jp/yasu-profile.jpg"
+  }
 }
 </script>
 <style>
@@ -321,6 +327,31 @@
   }
   .company .en-name{color:var(--muted);font-size:13px}
 
+  /* representative */
+  .profile{
+    display:grid;grid-template-columns:180px 1fr;gap:38px;
+    align-items:start;max-width:880px;
+  }
+  .profile-photo{margin:0}
+  .profile-photo img{
+    display:block;width:180px;height:180px;
+    border-radius:16px;object-fit:cover;
+    border:1px solid var(--line);background:var(--bg-elev);
+  }
+  .profile-name{
+    margin:0 0 6px;font-size:22px;line-height:1.5;
+    letter-spacing:.04em;font-feature-settings:"palt";
+  }
+  .profile-name .yomi{
+    margin-left:.8em;font-size:13px;font-weight:600;
+    color:var(--muted);letter-spacing:.08em;
+  }
+  .profile-title{
+    margin:0 0 20px;font-size:14px;line-height:1.9;
+    color:var(--accent);font-weight:600;
+  }
+  .profile-bio{margin:0;font-size:15px;color:var(--muted);line-height:2.15}
+
   /* contact */
   .contact-card{
     position:relative;overflow:hidden;
@@ -370,6 +401,13 @@
     .grid2{grid-template-columns:1fr}
     .sec{padding-top:72px}
     .built-grid{grid-template-columns:1fr 1fr}
+    .profile{grid-template-columns:1fr;gap:26px}
+    .profile-photo img{width:148px;height:148px}
+  }
+  @media (max-width:700px){
+    /* ナビ5項目はこの幅で1行に収まらない（625pxで実測3pxはみ出し）。
+       代表者は会社概要の直後に置いてあり、スクロールで必ず目に入るので先に畳む */
+    .site-head nav .nav-xwide{display:none}
   }
   @media (max-width:620px){
     /* ここから下はナビ4項目が1行に収まらない。このサイトの目的（受信者による実在確認）から
@@ -427,6 +465,7 @@
       <a href="#services">法人向け</a>
       <a href="#products" class="nav-wide">運営サービス</a>
       <a href="#company">会社概要</a>
+      <a href="#representative" class="nav-xwide">代表者</a>
       <a href="#contact">お問い合わせ</a>
     </nav>
   </div>
@@ -669,10 +708,29 @@
     </div>
   </section>
 
+  <section class="sec" id="representative" aria-labelledby="rep-h">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <p class="eyebrow mono">05 · Representative</p>
+        <h2 id="rep-h">代表者</h2>
+      </div>
+      <div class="profile" data-reveal>
+        <figure class="profile-photo">
+          <img src="yasu-profile.jpg" width="360" height="360" alt="安 昌浩" loading="lazy" decoding="async">
+        </figure>
+        <div>
+          <h3 class="profile-name">安 昌浩<span class="yomi">やす まさひろ</span></h3>
+          <p class="profile-title">elife株式会社 COO / 株式会社Scrum Technology 代表取締役</p>
+          <p class="profile-bio">京都大学で核融合を専攻した後、2011年、株式会社リクルートに入社。転職メディアの商品企画やHRTech領域の新規事業開発をはじめ、自然言語解析や機械学習領域の事業開発を担当する。2016年、同社の企画部門の最高賞を受賞。2017年9月、ブロックチェーンを用いたSNS「ALIS」を立ち上げるため国内初の規模でICOを実施し、4.3億円を調達。同社代表取締役社長を務めたのち、Opn株式会社Executive Vice Presidentを経て、現在はelife株式会社COO、株式会社Scrum Technology代表取締役。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="sec" id="contact" aria-labelledby="contact-h">
     <div class="wrap">
       <div class="contact-card" data-reveal>
-        <p class="eyebrow mono" style="justify-content:center">05 · Contact</p>
+        <p class="eyebrow mono" style="justify-content:center">06 · Contact</p>
         <h2 id="contact-h">お問い合わせ</h2>
         <p class="sub">ご相談・ご連絡は、下記のメールアドレスへお願いします。</p>
         <a class="btn btn-primary" href="mailto:yasu@scrumtechnology.jp">yasu@scrumtechnology.jp</a>
