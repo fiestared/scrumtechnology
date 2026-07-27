@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://scrumtechnology.jp/">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5f7fa">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a1119">
-<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAzMiAzMic+PHJlY3Qgd2lkdGg9JzMyJyBoZWlnaHQ9JzMyJyByeD0nNycgZmlsbD0nIzBiNTdhNCcvPjxwYXRoIGQ9J00xMCAxMmgxNScgc3Ryb2tlPScjZmZmJyBzdHJva2Utd2lkdGg9JzMnIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcvPjxwYXRoIGQ9J00xMCAxOWw1IDUgMTAtMTAnIHN0cm9rZT0nI2ZmZicgc3Ryb2tlLXdpZHRoPSczJyBzdHJva2UtbGluZWNhcD0ncm91bmQnIHN0cm9rZS1saW5lam9pbj0ncm91bmQnIGZpbGw9J25vbmUnLz48L3N2Zz4=">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzBiNTdhNCIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMuMDc2OSwzLjA3NjkpIHNjYWxlKDEuMDc2OTIpIj48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNCwwKSBzY2FsZSgtMSwxKSIgZmlsbD0iI2ZmZiIgZD0iTTIuMjUsMi4yNSBMMTcuMjUsMi4yNSBBNC41LDQuNSAwIDAgMSAyMS43NSw2Ljc1IEwyMS43NSw5Ljc1IEE0LjUsNC41IDAgMCAxIDE3LjI1LDE0LjI1IEw4LjI1LDE0LjI1IEExLjUsMS41IDAgMCAwIDYuNzUsMTUuNzUgQTEuNSwxLjUgMCAwIDAgOC4yNSwxNy4yNSBMMjEuNzUsMTcuMjUgTDIxLjc1LDIxLjc1IEw2Ljc1LDIxLjc1IEE0LjUsNC41IDAgMCAxIDIuMjUsMTcuMjUgTDIuMjUsMTQuMjUgQTQuNSw0LjUgMCAwIDEgNi43NSw5Ljc1IEwxNS43NSw5Ljc1IEExLjUsMS41IDAgMCAwIDE3LjI1LDguMjUgQTEuNSwxLjUgMCAwIDAgMTUuNzUsNi43NSBMMi4yNSw2Ljc1IFoiLz48L2c+PC9zdmc+">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -124,8 +124,10 @@
     display:flex;align-items:center;justify-content:space-between;
     gap:16px;min-height:62px;
   }
-  .brand{display:flex;align-items:center;text-decoration:none;color:var(--ink)}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
   .brand .name{font-weight:700;font-size:15px;letter-spacing:.02em;font-feature-settings:"palt"}
+  /* ロゴマーク: 24x24グリッドの塗りパス1本。色はcurrentColorで light/dark に追従する */
+  .mk{flex:none;display:block;color:var(--accent)}
   .site-head nav{display:flex;gap:20px}
   .site-head nav a{
     color:var(--muted);text-decoration:none;font-size:13px;letter-spacing:.04em;
@@ -328,6 +330,8 @@
   .site-foot{border-top:1px solid var(--line);padding:44px 0 56px;font-size:13px;color:var(--muted)}
   .foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:flex-start}
   .foot-brand{display:flex;align-items:flex-start;gap:12px}
+  /* 隣の <p> がブラウザ既定の上マージンを持つため、マークを1行目の高さまで下げる */
+  .foot-brand .mk{margin-top:11px}
   .foot-brand .txt{line-height:1.8}
   .foot-brand .nm{color:var(--ink);font-weight:700}
   .foot-links{display:flex;flex-direction:column;gap:6px;text-align:right}
@@ -371,11 +375,20 @@
 </style>
 </head>
 <body>
+<!-- ロゴマークのパス定義（1箇所にまとめ、ヘッダーとフッターから参照する）
+     24x24グリッド上で外形 19.5 の正方形。途切れない1本の帯を2回折り返した形。 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <path id="mk-s" transform="translate(24,0) scale(-1,1)" d="M2.25,2.25 L17.25,2.25 A4.5,4.5 0 0 1 21.75,6.75 L21.75,9.75 A4.5,4.5 0 0 1 17.25,14.25 L8.25,14.25 A1.5,1.5 0 0 0 6.75,15.75 A1.5,1.5 0 0 0 8.25,17.25 L21.75,17.25 L21.75,21.75 L6.75,21.75 A4.5,4.5 0 0 1 2.25,17.25 L2.25,14.25 A4.5,4.5 0 0 1 6.75,9.75 L15.75,9.75 A1.5,1.5 0 0 0 17.25,8.25 A1.5,1.5 0 0 0 15.75,6.75 L2.25,6.75 Z"/>
+  </defs>
+</svg>
+
 <a class="skip" href="#main">本文へスキップ</a>
 
 <header class="site-head">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Scrum Technology トップへ">
+      <svg class="mk" width="25" height="25" viewBox="2.25 2.25 19.5 19.5" aria-hidden="true"><use href="#mk-s" fill="currentColor"/></svg>
       <span class="name">Scrum Technology</span>
     </a>
     <nav aria-label="サイト内">
@@ -552,11 +565,7 @@
   <div class="wrap">
     <div class="foot-row">
       <div class="foot-brand">
-        <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true">
-          <rect width="32" height="32" rx="7" fill="var(--accent)"/>
-          <path d="M10 12h15" stroke="var(--on-accent)" stroke-width="3" stroke-linecap="round"/>
-          <path d="M10 19l5 5 10-10" stroke="var(--on-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
+        <svg class="mk" width="26" height="26" viewBox="2.25 2.25 19.5 19.5" aria-hidden="true"><use href="#mk-s" fill="currentColor"/></svg>
         <p class="txt">
           <span class="nm">株式会社Scrum Technology</span><br>
           Scrum Technology, Inc.<br>
