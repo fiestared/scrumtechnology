@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>株式会社Scrum Technology｜一次情報にあたり、機械が検算する</title>
-<meta name="description" content="株式会社Scrum Technology（東京都港区）。経理・労務の実務計算を公表元の資料から実装し、公表元の計算例と自動照合してから公開する「経理ミニツールズ」（keiri-tools.com）と、AIの料金相場・ニュースを扱う「AI TIMES」（aitimes.jp）を運営しています。">
+<meta name="description" content="株式会社Scrum Technology（東京都港区）。事業会社の経営に実務として入る業務委託と、動きの速い領域を継続して追いかけるリサーチ顧問を行っています。あわせて「経理ミニツールズ」（keiri-tools.com）「AI TIMES」（aitimes.jp）を自社で運営しています。">
 <link rel="canonical" href="https://scrumtechnology.jp/">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5f7fa">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a1119">
@@ -17,6 +17,7 @@
   "alternateName": "Scrum Technology, Inc.",
   "url": "https://scrumtechnology.jp/",
   "email": "yasu@scrumtechnology.jp",
+  "description": "事業会社の経営に実務として入る業務委託と、動きの速い領域を継続して追いかけるリサーチ顧問を行っています。あわせて経理・労務の実務計算を扱うWebサービスを自社で運営しています。",
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "JP",
@@ -125,13 +126,13 @@
     gap:16px;min-height:62px;
   }
   .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
-  .brand .name{font-weight:700;font-size:15px;letter-spacing:.02em;font-feature-settings:"palt"}
+  .brand .name{font-weight:700;font-size:15px;letter-spacing:.02em;font-feature-settings:"palt";white-space:nowrap}
   /* ロゴマーク: 24x24グリッドの塗りパス1本。色はcurrentColorで light/dark に追従する */
   .mk{flex:none;display:block;color:var(--accent)}
   .site-head nav{display:flex;gap:20px}
   .site-head nav a{
     color:var(--muted);text-decoration:none;font-size:13px;letter-spacing:.04em;
-    padding:6px 2px;
+    padding:6px 2px;white-space:nowrap;
   }
   .site-head nav a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:6px}
 
@@ -281,6 +282,9 @@
   /* services */
   .svc{display:flex;flex-direction:column;gap:0}
   .svc .dom{font-size:12.5px;color:var(--muted);letter-spacing:.04em;margin:2px 0 14px}
+  /* 法人向けサービスの契約形態ラベル（.dom と同じ見え方。意味が違うので別クラスにする）
+     flex:none が要る。付けないと下の .svc p{flex:1} を受けてラベル自体が伸び、本文との間が空く */
+  .svc .terms{flex:none;font-size:12.5px;color:var(--muted);letter-spacing:.04em;margin:2px 0 14px}
   .svc h3{font-size:20px}
   .svc p{flex:1}
   .svc .links{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13.5px}
@@ -288,6 +292,21 @@
   .svc .links a:hover{border-bottom-color:var(--accent)}
   .svc-top{display:flex;align-items:center;gap:14px;margin-bottom:4px}
   .svc-top .icon{margin:0;color:var(--accent);flex:none}
+
+  /* 実際に作ったもの */
+  .built{margin-top:20px;border:1px solid var(--line);border-radius:16px;background:var(--bg-elev);padding:32px 28px}
+  .built-h{margin:0 0 10px;font-size:17.5px;line-height:1.6;letter-spacing:.02em;font-feature-settings:"palt"}
+  .built-lead{margin:0 0 28px;font-size:14px;color:var(--muted);line-height:2;max-width:46em}
+  .built-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 32px}
+  .built-cat{
+    margin:0 0 12px;font-size:12px;letter-spacing:.1em;font-weight:600;color:var(--accent);
+    padding-bottom:9px;border-bottom:1px solid var(--line);
+  }
+  .built ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
+  .built li{position:relative;padding-left:15px;font-size:13.5px;line-height:1.85;color:var(--muted)}
+  .built li::before{
+    content:"";position:absolute;left:0;top:.9em;width:8px;height:1px;background:var(--line-strong);
+  }
 
   /* company */
   .company{max-width:760px}
@@ -350,10 +369,16 @@
     .grid3{grid-template-columns:1fr}
     .grid2{grid-template-columns:1fr}
     .sec{padding-top:72px}
+    .built-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:620px){
+    /* ここから下はナビ4項目が1行に収まらない。このサイトの目的（受信者による実在確認）から
+       会社概要は残し、ヒーローのCTAとフッターからも辿れる運営サービスを畳む */
+    .site-head nav .nav-wide{display:none}
   }
   @media (max-width:560px){
     .wrap{padding:0 18px}
-    .site-head nav{gap:14px}
+    .site-head nav{gap:13px}
     .site-head nav a{font-size:12px}
     .brand .name{font-size:14px}
     .lead{font-size:15px}
@@ -363,6 +388,13 @@
     .company td{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:2px}
     .contact-card{padding:44px 20px}
     .foot-links{text-align:left}
+    .built{padding:26px 20px}
+    .built-grid{grid-template-columns:1fr;gap:24px}
+  }
+  @media (max-width:500px){
+    /* この幅では「マーク＋社名＋ナビ3項目」が1行に収まらない。
+       社名を伏せてマークだけにする（社名は .brand の aria-label と直下の h1 で伝わる） */
+    .brand .name{display:none}
   }
 
   /* ---- reduced motion ---- */
@@ -392,7 +424,8 @@
       <span class="name">Scrum Technology</span>
     </a>
     <nav aria-label="サイト内">
-      <a href="#services">サービス</a>
+      <a href="#services">法人向け</a>
+      <a href="#products" class="nav-wide">運営サービス</a>
       <a href="#company">会社概要</a>
       <a href="#contact">お問い合わせ</a>
     </nav>
@@ -405,7 +438,7 @@
       <div>
         <p class="eyebrow mono">Primary sources · Machine-verified</p>
         <h1>一次情報にあたる。<br>機械が、<span class="kw">検算</span>する。</h1>
-        <p class="lead">株式会社Scrum Technology は、経理・労務の実務計算を扱うWebサービスを運営しています。料率や計算式は公表元の資料を直接参照して実装し、公表元が示している計算例と一致することを自動テストで確認してから公開する——数字を扱うソフトウェアを、その順番を守って作っている会社です。</p>
+        <p class="lead">株式会社Scrum Technology は、事業会社の経営に実務として入る業務委託と、動きの速い領域を継続して追いかけるリサーチ顧問を行っています。あわせて、経理・労務の実務計算を扱うWebサービスを自社で運営しています。料率や計算式は公表元の資料を直接参照して実装し、公表元が示している計算例と一致することを自動テストで確認してから公開する——数字を扱う仕事を、その順番を守ってやっている会社です。</p>
         <ul class="pipeline mono" aria-label="公開までの流れ">
           <li>公表元の資料</li>
           <li class="arr" aria-hidden="true">→</li>
@@ -417,7 +450,7 @@
         </ul>
         <div class="cta">
           <a class="btn btn-primary" href="mailto:yasu@scrumtechnology.jp">お問い合わせ</a>
-          <a class="btn btn-ghost" href="#services">運営サービスを見る</a>
+          <a class="btn btn-ghost" href="#services">法人向けサービスを見る</a>
         </div>
       </div>
       <figure class="term mono" role="img" aria-label="自動検算のイメージ。社会保険料・源泉徴収税額・有給休暇の付与日数の計算が、公表元の計算例と一致してテストを通過している様子。">
@@ -437,10 +470,97 @@
     </div>
   </section>
 
+  <section class="sec" id="services" aria-labelledby="services-h">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <p class="eyebrow mono">01 · Services</p>
+        <h2 id="services-h">法人向けサービス</h2>
+        <p>継続契約で、事業会社とベンチャーキャピタルにご一緒しています。単発の調査や資料作成ではなく、月次で関わり続ける形を基本にしています。</p>
+      </div>
+      <div class="grid2">
+        <article class="card svc" data-reveal>
+          <div class="svc-top">
+            <svg class="icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2.5" y="9" width="6" height="6" rx="1.5"/><rect x="15.5" y="3" width="6" height="6" rx="1.5"/><rect x="15.5" y="15" width="6" height="6" rx="1.5"/>
+              <path d="M8.5 12h3.5V6h3.5M12 12v6h3.5"/>
+            </svg>
+            <h3>経営顧問・業務委託</h3>
+          </div>
+          <p class="terms mono">継続契約 / 月次</p>
+          <p>代表は医療系スタートアップのCOOとして経営に入り、社内のあらゆる業務をAIで自動化しています。資料を渡す側ではなく、実務に入って手を動かす側です。数字の設計、業務フローの整理、実際に動くシステムの実装まで含めて継続でお引き受けします。提案書を出して終わりにはしません。</p>
+        </article>
+        <article class="card svc" data-reveal>
+          <div class="svc-top">
+            <svg class="icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="10.5" r="6.5"/><path d="M15.6 15.1L20.5 20"/>
+              <path d="M8 12.5l2.3-2.6 2 1.8L14.5 8"/>
+            </svg>
+            <h3>領域リサーチ・AI活用の顧問</h3>
+          </div>
+          <p class="terms mono">継続契約 / 月次・隔月</p>
+          <p>動きの速い領域を継続して追いかけ、レポートとして納品しています。ベンチャーキャピタル向けに、web3・NFT・ブロックチェーンを2023年7月から2025年12月まで、2026年1月からは生成AIを対象に続けています。レポートに加えて、社内向けのAI活用講座もあわせて行っています。一次情報にあたる進め方は、自社サービスと同じです。</p>
+        </article>
+      </div>
+
+      <div class="built" data-reveal>
+        <h3 class="built-h">実際に作ったもの</h3>
+        <p class="built-lead">医療系スタートアップのCOOとして自ら設計・実装し、いま社内で毎日動いているものです。個別の業務にAIを足したのではなく、経理から受発注、顧客対応、社内の情報共有まで、業務の側から順に自動化していきました。受託でも同じ範囲をお引き受けします。</p>
+        <div class="built-grid">
+          <div>
+            <p class="built-cat">経理・請求</p>
+            <ul>
+              <li>請求書の受領からチェック、会計ソフトへの連携まで</li>
+              <li>仕入原価の自動更新</li>
+              <li>月次の定型仕訳の計上</li>
+            </ul>
+          </div>
+          <div>
+            <p class="built-cat">受発注・在庫</p>
+            <ul>
+              <li>在庫管理システム</li>
+              <li>発注量を提案するボット</li>
+              <li>納品書と発注内容の突合</li>
+            </ul>
+          </div>
+          <div>
+            <p class="built-cat">顧客対応</p>
+            <ul>
+              <li>問い合わせに一次対応するAIチャットボット</li>
+              <li>過去の回答を根拠に下書きを作り、判断が要るものは人へ渡す仕組み</li>
+            </ul>
+          </div>
+          <div>
+            <p class="built-cat">営業・データ</p>
+            <ul>
+              <li>売上データの集約パイプライン</li>
+              <li>主要指標を毎朝Slackへ届ける日次レポート</li>
+              <li>競合価格・キャンペーンの監視</li>
+            </ul>
+          </div>
+          <div>
+            <p class="built-cat">社内業務</p>
+            <ul>
+              <li>会議の録音から文字起こし・話者分離・議事録まで</li>
+              <li>採用管理</li>
+              <li>会議室の調整</li>
+            </ul>
+          </div>
+          <div>
+            <p class="built-cat">AI運用の土台</p>
+            <ul>
+              <li>社内ナレッジベースと、そこを参照して答える仕組み</li>
+              <li>動いているボット群の死活監視</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="sec" id="approach" aria-labelledby="approach-h">
     <div class="wrap">
       <div class="sec-head" data-reveal>
-        <p class="eyebrow mono">01 · Approach</p>
+        <p class="eyebrow mono">02 · Approach</p>
         <h2 id="approach-h">数字を出すまでの、決まりごと</h2>
         <p>実務の計算は、正しいかどうかを人の目だけで確かめ続けるには数が多すぎます。だから、確かめる仕事を機械に持たせています。</p>
       </div>
@@ -473,11 +593,12 @@
     </div>
   </section>
 
-  <section class="sec" id="services" aria-labelledby="services-h">
+  <section class="sec" id="products" aria-labelledby="products-h">
     <div class="wrap">
       <div class="sec-head" data-reveal>
-        <p class="eyebrow mono">02 · Services</p>
-        <h2 id="services-h">運営サービス</h2>
+        <p class="eyebrow mono">03 · Products</p>
+        <h2 id="products-h">運営サービス</h2>
+        <p>受託とは別に、自社で運営しているWebサービスです。上に書いた進め方を実際にどうやっているかは、こちらの中身を見ていただくのが早いと思います。</p>
       </div>
       <div class="grid2">
         <article class="card svc" data-reveal>
@@ -516,7 +637,7 @@
   <section class="sec" id="company" aria-labelledby="company-h">
     <div class="wrap">
       <div class="sec-head" data-reveal>
-        <p class="eyebrow mono">03 · Company</p>
+        <p class="eyebrow mono">04 · Company</p>
         <h2 id="company-h">会社概要</h2>
       </div>
       <div class="company" data-reveal>
@@ -540,7 +661,7 @@
             </tr>
             <tr>
               <th scope="row">事業内容</th>
-              <td>Webサービスの企画・開発・運営<br>業務データの検算・突合に関するソフトウェアの開発</td>
+              <td>経営顧問・業務委託<br>調査・研究レポートの作成および提供<br>Webサービスの企画・開発・運営<br>業務データの検算・突合に関するソフトウェアの開発</td>
             </tr>
           </tbody>
         </table>
@@ -551,7 +672,7 @@
   <section class="sec" id="contact" aria-labelledby="contact-h">
     <div class="wrap">
       <div class="contact-card" data-reveal>
-        <p class="eyebrow mono" style="justify-content:center">04 · Contact</p>
+        <p class="eyebrow mono" style="justify-content:center">05 · Contact</p>
         <h2 id="contact-h">お問い合わせ</h2>
         <p class="sub">ご相談・ご連絡は、下記のメールアドレスへお願いします。</p>
         <a class="btn btn-primary" href="mailto:yasu@scrumtechnology.jp">yasu@scrumtechnology.jp</a>
