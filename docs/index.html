@@ -476,7 +476,7 @@
     <div class="wrap">
       <div>
         <p class="eyebrow mono">AI coworkers · In production</p>
-        <h1>AIを、<br><span class="kw">従業員</span>として働かせる。</h1>
+        <h1>AIを、<span class="kw">従業員</span>として<br>働かせる。</h1>
         <p class="lead">AIを入れたのに、結局は人が確認して手で直している。株式会社Scrum Technology は、その状態を解く会社です。ツールを配って終わりにせず、業務そのものを組み替えて、AIが日々の業務を回す状態まで実装します。代表は医療系スタートアップのCOOとして、経理から受発注、顧客対応、社内の情報共有までを実際にAIへ移し、いまも毎日動かしています——作った人間が、そのまま実務に入ります。</p>
         <ul class="pipeline mono" aria-label="AIに業務を任せるまでの流れ">
           <li>業務を分解する</li>
@@ -600,8 +600,8 @@
     <div class="wrap">
       <div class="sec-head" data-reveal>
         <p class="eyebrow mono">02 · Approach</p>
-        <h2 id="approach-h">数字を出すまでの、決まりごと</h2>
-        <p>実務の計算は、正しいかどうかを人の目だけで確かめ続けるには数が多すぎます。だから、確かめる仕事を機械に持たせています。</p>
+        <h2 id="approach-h">AIに仕事を任せるまでの、決まりごと</h2>
+        <p>AIは、導入すれば働いてくれるわけではありません。人を迎えるときと同じで、何を見て答えるか、どこから先は人に渡すか、止まったら誰が気づくかを決めておく必要があります。この3つを決めないまま入れたAIは、使われないまま残ります。</p>
       </div>
       <div class="grid3">
         <article class="card" data-reveal>
@@ -609,24 +609,24 @@
           <svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M5 3h11l3 3v15H5z"/><path d="M15.5 3v3.5H19"/><path d="M8.5 11h7M8.5 14.5h7M8.5 18h4"/>
           </svg>
-          <h3>一次情報にあたる</h3>
-          <p>料率や計算式は、公表元の資料を直接参照して実装します。まとめサイトの数字は写しません。</p>
+          <h3>根拠を渡してから任せる</h3>
+          <p>人に仕事を任せるときと同じで、AIにも参照先が要ります。社内の手順書と過去の対応をナレッジベースにまとめ、そこを見て答えさせます。モデルが覚えていることに任せません。</p>
         </article>
         <article class="card" data-reveal>
           <p class="num mono">02</p>
           <svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v5h-5"/><path d="M8.5 12.2l2.4 2.4 4.6-4.6"/>
+            <path d="M3 12h4"/><path d="M7 12c4 0 5-8 9-8h5"/><path d="M7 12c4 0 5 8 9 8h5"/>
           </svg>
-          <h3>機械が確かめる</h3>
-          <p>公表元が示している計算例と一致することを自動テストで確認してから公開します。検算が通らないものは出しません。</p>
+          <h3>人に渡す線を先に引く</h3>
+          <p>全部を任せる設計にはしません。金額が動くもの、例外、確信が持てないものは人へ回します。どこまでをAIが決めるかの線を、実装より先に引きます。</p>
         </article>
         <article class="card" data-reveal>
           <p class="num mono">03</p>
           <svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M8.5 7.5L4 12l4.5 4.5"/><path d="M15.5 7.5L20 12l-4.5 4.5"/><path d="M13.2 5l-2.4 14"/>
+            <path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v5h-5"/><path d="M8.5 12.2l2.4 2.4 4.6-4.6"/>
           </svg>
-          <h3>オープンソースで公開する</h3>
-          <p>経理ミニツールズの計算ロジックと検証テストは、MITライセンスのオープンソースとしてGitHubで公開しています。中身は誰でも確かめられます。</p>
+          <h3>止まったら気づける状態にする</h3>
+          <p>AIは人と違って、黙って止まります。動かしている仕組みには死活監視をつけ、結果は毎朝Slackへ届くようにします。動かなくなったことに翌月気づく、という状態を作りません。</p>
         </article>
       </div>
     </div>
