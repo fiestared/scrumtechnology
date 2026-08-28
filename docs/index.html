@@ -144,15 +144,6 @@
 
   /* ---- hero ---- */
   .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-  .hero::before{
-    content:"";position:absolute;inset:0;pointer-events:none;
-    background-image:
-      linear-gradient(var(--grid) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-    background-size:36px 36px;
-    -webkit-mask-image:radial-gradient(ellipse 95% 80% at 50% 0%, #000 25%, transparent 78%);
-    mask-image:radial-gradient(ellipse 95% 80% at 50% 0%, #000 25%, transparent 78%);
-  }
   .hero::after{
     content:"";position:absolute;right:-140px;top:40px;width:560px;height:560px;
     background:radial-gradient(closest-side, var(--glow), transparent 72%);
