@@ -17,10 +17,24 @@ keiri-tools 側の誠実な記述を書き換えずに筋を通す。
 
 ## 構成
 
-- `docs/index.html` — 1ページのみ（自己完結。外部CSS・外部JS・Webフォント・外部画像に依存しない）。<br>Fable(claude-fable-5)とCodex(gpt-5.6)に同じ仕様で並走させ、Fable案を採用。
+2026-09-10: オイラーの公式を軸に、黒・プラチナ・淡い青のデザインへ更新。
+
+- `docs/index.html` — 事業紹介、単位円と正弦波の対話図、会社情報。既存のOrganization構造化データを維持。
+- `docs/assets/site.css` — レスポンシブスタイル、画像の緩やかな移動、スクロール表示。
+- `docs/assets/site.js` — Canvas軌道、SVGの単位円・波、角度スライダー、θ=πへの切替。
+- `docs/assets/euler-sculpture.webp` — 生成したヒーロー画像（192,340 bytes）。プロンプトは `design/image-provenance.md`。
+- `docs/yasu-profile.jpg` — 既存の代表者写真。
 - `docs/CNAME` — `scrumtechnology.jp`
 
-light/dark 両対応・モバイル対応。JSON-LD で Organization を出している。
+依存ライブラリ・ビルド工程・外部フォントなし。画像、CSS、JSは同じサイトから配信。
+JavaScript無効でも事業内容・連絡先・静的な数式図を表示。
+`prefers-reduced-motion` と「動きを止める」に対応。非表示タブ・画面外では描画ループを停止。
+
+ローカル確認:
+
+```sh
+python3 -m http.server 4317 --bind 127.0.0.1 --directory docs
+```
 
 ## 公開手順
 
