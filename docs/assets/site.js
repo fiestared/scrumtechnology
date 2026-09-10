@@ -38,9 +38,9 @@
     wave.setAttribute('d', path);
     slider.value = String(theta / Math.PI);
     output.value = `${(theta / Math.PI).toFixed(2)}π`;
-    slider.setAttribute('aria-valuetext', `${(theta / Math.PI).toFixed(2)} パイラジアン`);
+    slider.setAttribute('aria-valuetext', `${(theta / Math.PI).toFixed(2)}パイ ラジアン`);
     const isPi = Math.abs(theta - Math.PI) < .002;
-    note.textContent = isPi ? 'θ = π → eⁱπ = −1 → eⁱπ + 1 = 0' : '円の上の点と、波の高さは同じ。';
+    note.innerHTML = isPi ? 'θ = π → e<sup>iπ</sup> = −1 → e<sup>iπ</sup> + 1 = 0' : '円の上の点の高さと、波の始点の高さは同じ。';
   }
   function resize() {
     const box = hero.getBoundingClientRect();
@@ -85,8 +85,8 @@
   function start() { if (!frame && !paused && !document.hidden) { last=0; frame=requestAnimationFrame(animate); } }
   function updateMotion() {
     document.body.classList.toggle('motion-paused', paused);
-    toggle.setAttribute('aria-pressed', String(paused));
-    toggle.textContent = paused ? '動きを再開する ▷' : '動きを止める Ⅱ';
+    toggle.firstChild.data = paused ? '動きを再開する ' : '動きを止める ';
+    toggle.lastElementChild.textContent = paused ? '▷' : 'Ⅱ';
     if (paused) { cancelAnimationFrame(frame);frame=0;last=0; }
     else start();
   }
